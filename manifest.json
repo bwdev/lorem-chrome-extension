@@ -10,10 +10,11 @@
       ],
       "js": [
         "main.js"
+      ],
+      "permissions": [
+        "activeTab"
       ]
     }
-  ],
-  "permissions": [
-    "input"
   ]
+
 }
