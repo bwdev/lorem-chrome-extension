@@ -42,6 +42,11 @@
 </p>
 
 
+## How to Use
+* focus on any input on your html form
+* type lorem:[sp][0-9]
+  - s == sentences and p == paragraphs
+  - the number following s or p determines how many sentences or paragraphs (respectively) are put in to the input
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
