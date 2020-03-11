@@ -1,0 +1,19 @@
+{
+  "name": "Bacon Ipsum Filler",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "A simple tool to insert lorem ipsum text in an html form input.",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "main.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "input"
+  ]
+}
