@@ -48,22 +48,7 @@
   - s == sentences and p == paragraphs
   - the number following s or p determines how many sentences or paragraphs (respectively) are put in to the input
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-* [About the Project](#about-the-project)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
-
-
-### Installation
+## Installation
  
 1. Install from Chrome WebStore
 
