@@ -48,9 +48,9 @@
   - s == sentences
   - p == paragraphs
   - w == words
-  - the number following s or p determines how many sentences or paragraphs (respectively) are put in to the input
+  - the number following s, w or p determines how many sentences, words or paragraphs (respectively) are put in to the input
 * OR... you can use shortcuts
-  - >>:[0-9] will enter (n) number of sentences
+  - \>\>:[0-9] will enter (n) number of sentences
   - <<:[0-9] will enter (n) number of words
 * OR... you can use any of the above sequences wrapped in <<>> to apply a randomized series of text to all inputs and textareas on the page
 
