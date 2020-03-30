@@ -21,7 +21,7 @@ window.addEventListener('input', function(evt) {
 
 	loremService.callApi(parsed, apiOptions, (txt, urlOpts) => {
 		updateDom(el, txt, urlOpts);
-		console.log(urlOpts);
+		// console.log(urlOpts);
 		if (parsed.isGlobal) {
 			var inputs = document.querySelectorAll('input, textarea');
 			inputs.forEach(input => {

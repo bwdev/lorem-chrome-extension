@@ -29,7 +29,7 @@ PatternMatcher.prototype = {
 		var isGlobal = this.determineIsGlobal(str);
 		str = isGlobal ? this.stripGlobalString(str) : str;
 		if (!this.matchPattern(str)) return this.next ? this.next.getCountAndType(str) : null;
-		 console.log(isGlobal);
+		//  console.log(isGlobal);
 		return Object.assign(
 			{},
 			{
