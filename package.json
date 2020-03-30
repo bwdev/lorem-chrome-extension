@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "zip -i main.js -i manifest.json  -r dist/archive_name.zip . ",
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/bwdev/lorem-chrome-extension/issues"
   },
-  "homepage": "https://github.com/bwdev/lorem-chrome-extension#readme"
+  "homepage": "https://github.com/bwdev/lorem-chrome-extension#readme",
+  "devDependencies": {
+    "jest": "^25.2.3"
+  },
+  "dependencies": {
+    "rewire": "^5.0.0"
+  }
 }
