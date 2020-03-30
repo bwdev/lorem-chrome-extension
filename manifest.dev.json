@@ -9,17 +9,8 @@
         "<all_urls>"
       ],
       "js": [
-        "pattern-matchers/pattern-matcher.js",
-        "pattern-matchers/word-pattern-matcher.js",
-        "pattern-matchers/lorem.pattern-matcher.js",
-        "parse.js",
-        "main.js"
+        "content-script.bundle.js"
       ]
     }
-  ],
-  "web_accessible_resources": [
-    "parse.js",
-    "lorem.service.js"
- ]
-
+  ]
 }

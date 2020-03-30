@@ -1,15 +1,16 @@
-function callApi(parsed, callback, apiOptions = apiOptions) {
-	var url = buildApiUrl(parsed, apiOptions);
+function callApi(parsed, apiOptions, callback) {
+	console.log(apiOptions);
+	var urlOpts = buildApiUrl(parsed, apiOptions);
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.onreadystatechange = function() {
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-			callback(xmlHttp.responseText);
+			callback(xmlHttp.responseText, urlOpts);
 	};
-	xmlHttp.open('GET', url, true); // true for asynchronous
+	xmlHttp.open('GET', urlOpts.url, true); // true for asynchronous
 	xmlHttp.send(null);
 }
 
-function buildApiUrl(parsed, apiOptions = apiOptions) {
+function buildApiUrl(parsed, apiOptions) {
 	var opts = buildApiOptions(parsed, apiOptions);
 	var type = `type=${opts.type}&`;
 	var sentences =
@@ -22,10 +23,13 @@ function buildApiUrl(parsed, apiOptions = apiOptions) {
 
 	if (sentences === null && paragraphs === null) sentences = 1;
 
-	return `${opts.api}?${type}${sentences}${paragraphs}${startWithLorem}${format}`;
+	return {
+		url: `${opts.api}?${type}${sentences}${paragraphs}${startWithLorem}${format}`,
+		words: opts.words
+	};
 }
 
-function buildApiOptions(options, apiOptions = apiOptions) {
+function buildApiOptions(options, apiOptions) {
 	var sentences = options.type === 's' ? options.count : null;
 	var paragraphs = options.type === 'p' ? options.count : null;
 	var words = options.type === 'w' ? options.count : null;
