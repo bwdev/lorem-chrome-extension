@@ -1,8 +1,9 @@
 var rewire = require('rewire');
-var service = rewire('./lorem.service');
+var serviceRewire = rewire('./lorem.service');
+var service = require('./lorem.service');
 
-var buildApiOptions = service.__get__('buildApiOptions');
-var buildApiUrl = service.__get__('buildApiUrl');
+var buildApiOptions = serviceRewire.__get__('buildApiOptions');
+var buildApiUrl = serviceRewire.__get__('buildApiUrl');
 
 describe('LoremService tests', () => {
 	test('should get apiOptions', () => {
@@ -29,7 +30,7 @@ describe('LoremService tests', () => {
 		};
 		var sut = buildApiUrl({ type: 'p', count: 1 }, opts);
 
-		expect(sut).toBe(
+		expect(sut.url).toBe(
 			`http://foo?type=meat-and-filler&paragraphs=1&startWithLorem=1&format=text`
 		);
 	});
@@ -42,8 +43,16 @@ describe('LoremService tests', () => {
 		};
 		var sut = buildApiUrl({type: 's', count: 5}, opts);
 
-		expect(sut).toBe(
+		expect(sut.url).toBe(
 			`http://foo?type=meat-and-filler&sentences=5&startWithLorem=1&format=text`
 		);
+	});
+
+	test('should randomize string', () => {
+		var str = 'Bacon ipsum dolor amet biltong buffalo t-bone brisket, piggy';
+		var sut = service.randomizeString(str);
+
+		expect(sut.length).toBe(60);
+		expect(sut === str).toBe(false);
 	});
 });

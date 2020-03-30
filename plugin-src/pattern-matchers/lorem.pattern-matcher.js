@@ -1,6 +1,6 @@
 var PatternMatcher = require('./pattern-matcher');
 
-var LoremPatternMatcher = new PatternMatcher(/^lorem:[spw][0-9]/g);
+var LoremPatternMatcher = new PatternMatcher(/^lorem:[spw][0-9]/gi);
 
 // overriding determineType from the prototype
 LoremPatternMatcher.determineType = function(str) {

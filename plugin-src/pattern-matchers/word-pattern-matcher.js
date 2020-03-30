@@ -1,6 +1,6 @@
 var PatternMatcher = require('./pattern-matcher');
 
-var WordPatternMatcher = new PatternMatcher(/^<<:[0-9]/g);
+var WordPatternMatcher = new PatternMatcher(/^<<:[0-9]/gi);
 
 //overriding prototype
 WordPatternMatcher.determineType = function(str) {

@@ -14,6 +14,7 @@ var keyBindingAllInputs = /^<<>>[0-9]/g;
 
 var PatternMatcher = function(pattern) {
 	this.pattern = pattern;
+	this._globalRegex = /^<<.*>>$/g;
 	this.next = null;
 };
 
@@ -25,14 +26,28 @@ PatternMatcher.prototype = {
 		this.next = matcher;
 	},
 	getCountAndType: function(str) {
+		var isGlobal = this.determineIsGlobal(str);
+		str = isGlobal ? this.stripGlobalString(str) : str;
 		if (!this.matchPattern(str)) return this.next ? this.next.getCountAndType(str) : null;
+		 console.log(isGlobal);
 		return Object.assign(
 			{},
 			{
 				type: this.determineType(str),
 				count: this.determineCount(str),
+				isGlobal
 			}
 		);
+	},
+	determineIsGlobal: function(str){
+		return str.match(this._globalRegex) != null;
+	},
+	stripGlobalString: function(str){
+		var globalMatch = str.match(this._globalRegex) || [];
+		if(!globalMatch) return null;
+		str = globalMatch[0];
+
+		return str.substring(2, str.length - 2);
 	},
 	determineType: function(str) {
 		throw Error(

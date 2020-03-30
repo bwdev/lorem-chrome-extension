@@ -2,7 +2,26 @@ require('jest');
 var rewire = require('rewire');
 var parser = rewire('./parse');
 
+var setupChainOfResponsibility = parser.__get__('setupChainOfResponsibility');
+
+var loremMatcher = require('./pattern-matchers/lorem.pattern-matcher');
+var wordMatcher = require('./pattern-matchers/word-pattern-matcher');
+var sentenceMatcher = require('./pattern-matchers/sentence-pattern-matcher');
+
 describe('Parser Tests', () => {
+	test('should setup chain of responsibility', () => {
+		var sut = [loremMatcher, wordMatcher, sentenceMatcher];
+		setupChainOfResponsibility(sut);
+
+		expect(sut[0]).toBe(loremMatcher);
+		expect(sut[0].next).toBe(wordMatcher);
+		expect(sut[1]).toBe(wordMatcher);
+		expect(sut[1].next).toBe(sentenceMatcher);
+		expect(sut[2]).toBe(sentenceMatcher);
+		expect(sut[2].next).toBe(undefined);
+
+	});
+
 	test('should give a valid count and type for lorem sentences', () => {
 		var sut = parser.parse('lorem:s1');
 		expect(sut.count).toBe(1);
